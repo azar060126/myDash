@@ -687,10 +687,18 @@ if not st.session_state.data_loaded:
     with col_actions1:
         if st.button("✅ Tout sélectionner", use_container_width=True):
             st.session_state.sites_selectionnes = all_sites.copy()
+
+            for site in all_sites:
+                st.session_state[f"chk_{site}"] = True
+                
             st.rerun()
     with col_actions2:
         if st.button("☐ Tout vider", use_container_width=True):
             st.session_state.sites_selectionnes = []
+
+            for site in all_sites:
+                st.session_state[f"chk_{site}"] = False
+            
             st.rerun()
 
 
